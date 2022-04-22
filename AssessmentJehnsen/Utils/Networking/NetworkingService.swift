@@ -7,17 +7,15 @@
 
 import Foundation
 
-class CoinService {
-    public func request<T: Decodable>(_ method: NetworkingMethod = .get, _ endpoint: NetworkingEndpoint, headers: [String: String] = [:], parameters: [String: Any] = [:], responseType: T.Type, completion: @escaping (_ result: Result<T, Error>) -> Void) {
+class NetworkingService {
+    public static let shared = NetworkingService()
+    
+    public func request<T: Decodable>(_ method: NetworkingMethod = .get, _ endpoint: NetworkingEndpoint, headers: [String: String] = [:], parameters: [String: Any] = [:], responseType: T.Type, completion: @escaping (_ result: Result<T, CoinGeckoError>) -> Void) {
 
-        var defaultHeaders: [String: String] = [
+        let defaultHeaders: [String: String] = [
             "Content-Type": "application/json",
             "Accept": "application/json"
         ]
-
-//        if let authToken = session.authToken, !authToken.isEmpty {
-//            defaultHeaders["Authorization"] = "Bearer \(authToken)"
-//        }
 
         guard let url = URL.construct(endpoint) else {
             fatalError("Invalid URL, please check `NetworkingEndpoint`")
@@ -36,12 +34,18 @@ class CoinService {
         }
 
         let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-            if let error = error {
-                completion(.failure(error))
+            if error != nil {
+                completion(.failure(.apiError))
                 return
             }
-
+            
+            guard let httpResponse = response as? HTTPURLResponse, 200..<300 ~= httpResponse.statusCode else {
+                completion(.failure(.invalidResponse))
+                return
+            }
+            
             guard let data = data else {
+                completion(.failure(.noData))
                 return
             }
 
@@ -58,19 +62,20 @@ class CoinService {
             do {
                 let result = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(result))
-            } catch let error {
-                completion(.failure(error))
+            } catch {
+                completion(.failure(.serializationError))
             }
         })
         task.resume()
     }
 }
+
 extension URL {
     static func construct(_ endpoint: NetworkingEndpoint, queries: [String: Any] = [:]) -> URL? {
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "api.coingecko.com/api"
-        components.path = "/" + endpoint.value
+        components.host = "api.coingecko.com"
+        components.path =  endpoint.value
         components.queryItems = queries.isEmpty ? nil : queries
             .compactMapValues({
                 if let value = $0 as? String {
@@ -92,11 +97,12 @@ public enum NetworkingEndpoint {
 
     // Login
     case authPreparation
-
+    case getCoinMarkets
 
     var value: String {
         switch self {
         case .authPreparation: return "v1/users/sme/authprep"
+        case .getCoinMarkets: return "/api/v3/coins/markets"
         }
     }
 }

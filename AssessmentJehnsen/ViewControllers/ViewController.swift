@@ -11,15 +11,37 @@ class ViewController: UIViewController {
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.backgroundColor = .clear
-        view.sizeToFit()
+        view.rowHeight = 100
+        view.register(HomeTableViewCell.self, forCellReuseIdentifier: String(describing: HomeTableViewCell.self))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    lazy var viewModel: HomeViewModel = {
+        let viewModel = HomeViewModel(service: CoinService())
+        viewModel.onFinishFetchCoin = didFinishFetchCoin
+        return viewModel
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setupTableView()
+        viewModel.fetchCoins()
     }
+    
+    private func didFinishFetchCoin(_ message: String?) {
+        guard message == nil else {
+            popupAlert(title: "Error", message: message ?? "Error")
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+    
     func setupView() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -41,13 +63,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return viewModel.coinData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.accessoryType = .
-        cell.textLabel?.text = "asdsdadsdadadas"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HomeTableViewCell.self)) as? HomeTableViewCell else {
+            fatalError(
+                "Couldn't find UITableViewCell for \(String(describing: HomeTableViewCell.self)), make sure the cell is registered with table view")
+        }
+        cell.setupContent(data: viewModel.coinData[indexPath.row])
         return cell
     }
 }

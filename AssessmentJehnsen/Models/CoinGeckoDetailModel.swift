@@ -21,7 +21,7 @@ struct CoinImage: Decodable {
 }
 
 struct CoinMarketCap: Decodable {
-    let marketCapUSD: String?
+    let marketCapUSD: Float?
     
     enum Keys: String, CodingKey {
         case marketCapUSD = "usd"
@@ -29,25 +29,28 @@ struct CoinMarketCap: Decodable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
-        self.marketCapUSD = try container.decodeIfPresent(String.self, forKey: .marketCapUSD)
+        self.marketCapUSD = try container.decodeIfPresent(Float.self, forKey: .marketCapUSD)
     }
 }
 
 struct CoinMarketData: Decodable {
     let currentPrice: CoinCurrentPrice?
+    let coinMarketCap: CoinMarketCap?
     
     enum Keys: String, CodingKey {
         case currentPrice = "current_price"
+        case marketCap = "market_cap"
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         self.currentPrice = try container.decodeIfPresent(CoinCurrentPrice.self, forKey: .currentPrice)
+        self.coinMarketCap = try container.decodeIfPresent(CoinMarketCap.self, forKey: .marketCap)
     }
 }
 
 struct CoinCurrentPrice: Decodable {
-    let usd: String?
+    let usd: Float?
     
     enum Keys: String, CodingKey {
         case usd
@@ -55,7 +58,7 @@ struct CoinCurrentPrice: Decodable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
-        self.usd = try container.decodeIfPresent(String.self, forKey: .usd)
+        self.usd = try container.decodeIfPresent(Float.self, forKey: .usd)
     }
 }
 
@@ -77,7 +80,6 @@ struct CoinGeckoDetailModel: Decodable {
     let symbolLabel: String?
     let name: String?
     let iconUrl: CoinImage?
-    let marketCap: CoinMarketCap?
     let marketCapRank: Int?
     let marketData: CoinMarketData?
     let description: CoinDescription?
@@ -107,7 +109,6 @@ struct CoinGeckoDetailModel: Decodable {
         self.symbolLabel = try container.decodeIfPresent(String.self, forKey: .symbolLabel)
         self.name = try container.decodeIfPresent(String.self, forKey: .name)
         self.iconUrl = try container.decodeIfPresent(CoinImage.self, forKey: .iconUrl)
-        self.marketCap = try container.decodeIfPresent(CoinMarketCap.self, forKey: .marketCap)
         self.marketCapRank = try container.decodeIfPresent(Int.self, forKey: .marketCapRank)
         self.marketData = try container.decodeIfPresent(CoinMarketData.self, forKey: .marketData)
         self.description = try container.decodeIfPresent(CoinDescription.self, forKey: .description)

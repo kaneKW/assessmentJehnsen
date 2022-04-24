@@ -88,21 +88,3 @@ extension URL {
         return components.url
     }
 }
-
-enum NetworkingMethod: String {
-    case get, post, patch, put, delete
-}
-
-public enum NetworkingEndpoint {
-
-    // Login
-    case authPreparation
-    case getCoinMarkets
-
-    var value: String {
-        switch self {
-        case .authPreparation: return "v1/users/sme/authprep"
-        case .getCoinMarkets: return "/api/v3/coins/markets"
-        }
-    }
-}

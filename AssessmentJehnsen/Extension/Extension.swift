@@ -37,3 +37,17 @@ extension UIViewController {
         }
     }
 }
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return nil }
+        do {
+            let attributedString = try NSMutableAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+            let range = NSRange(location: 0, length: attributedString.length)
+            attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 15), range: range)
+            return attributedString
+        } catch {
+            return NSAttributedString()
+        }
+    }
+}

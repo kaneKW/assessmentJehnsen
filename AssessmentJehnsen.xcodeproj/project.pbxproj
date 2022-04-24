@@ -16,7 +16,6 @@
 		9812FBBB27DDC4E000F679EC /* AssessmentJehnsenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBBA27DDC4E000F679EC /* AssessmentJehnsenTests.swift */; };
 		9812FBC527DDC4E000F679EC /* AssessmentJehnsenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBC427DDC4E000F679EC /* AssessmentJehnsenUITests.swift */; };
 		9812FBC727DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBC627DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift */; };
-		9812FBD727DDCA3300F679EC /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9812FBD627DDCA3300F679EC /* Storyboard.storyboard */; };
 		9812FBD927DDDD1400F679EC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */; };
 		9812FBDB27DDE7D300F679EC /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBDA27DDE7D300F679EC /* NetworkingService.swift */; };
 		98D65BCC2812AFF000C7596A /* CoinGeckoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BCB2812AFF000C7596A /* CoinGeckoModel.swift */; };
@@ -28,6 +27,8 @@
 		98D65BE12815864800C7596A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE02815864800C7596A /* DetailViewController.swift */; };
 		98D65BE4281588BF00C7596A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE3281588BF00C7596A /* DetailView.swift */; };
 		98D65BE62815952B00C7596A /* CoinGeckoDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE52815952B00C7596A /* CoinGeckoDetailModel.swift */; };
+		98D65BE92815B30900C7596A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE82815B30900C7596A /* DetailViewModel.swift */; };
+		98D65BEB2815B8BA00C7596A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BEA2815B8BA00C7596A /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +62,6 @@
 		9812FBC027DDC4E000F679EC /* AssessmentJehnsenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssessmentJehnsenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9812FBC427DDC4E000F679EC /* AssessmentJehnsenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentJehnsenUITests.swift; sourceTree = "<group>"; };
 		9812FBC627DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentJehnsenUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9812FBD627DDCA3300F679EC /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		9812FBDA27DDE7D300F679EC /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		98D65BCB2812AFF000C7596A /* CoinGeckoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoModel.swift; sourceTree = "<group>"; };
@@ -73,6 +73,8 @@
 		98D65BE02815864800C7596A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		98D65BE3281588BF00C7596A /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		98D65BE52815952B00C7596A /* CoinGeckoDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoDetailModel.swift; sourceTree = "<group>"; };
+		98D65BE82815B30900C7596A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		98D65BEA2815B8BA00C7596A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +132,6 @@
 				98D65BD128130B0E00C7596A /* Models */,
 				98D65BD028130B0800C7596A /* ViewModels */,
 				98D65BCF28130B0000C7596A /* ViewControllers */,
-				9812FBD627DDCA3300F679EC /* Storyboard.storyboard */,
 				9812FBA927DDC4DE00F679EC /* Main.storyboard */,
 				9812FBAC27DDC4DF00F679EC /* Assets.xcassets */,
 				9812FBAE27DDC4DF00F679EC /* LaunchScreen.storyboard */,
@@ -161,6 +162,7 @@
 			children = (
 				9812FBA727DDC4DE00F679EC /* ViewController.swift */,
 				98D65BE02815864800C7596A /* DetailViewController.swift */,
+				98D65BEA2815B8BA00C7596A /* HomeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				98D65BD228130BD900C7596A /* HomeViewModel.swift */,
+				98D65BE82815B30900C7596A /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -332,7 +335,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9812FBB027DDC4DF00F679EC /* LaunchScreen.storyboard in Resources */,
-				9812FBD727DDCA3300F679EC /* Storyboard.storyboard in Resources */,
 				9812FBAD27DDC4DF00F679EC /* Assets.xcassets in Resources */,
 				9812FBAB27DDC4DE00F679EC /* Main.storyboard in Resources */,
 			);
@@ -370,8 +372,10 @@
 				98D65BE4281588BF00C7596A /* DetailView.swift in Sources */,
 				9812FBA427DDC4DE00F679EC /* AppDelegate.swift in Sources */,
 				9812FBA627DDC4DE00F679EC /* SceneDelegate.swift in Sources */,
+				98D65BEB2815B8BA00C7596A /* HomeViewController.swift in Sources */,
 				98D65BCC2812AFF000C7596A /* CoinGeckoModel.swift in Sources */,
 				9812FBDB27DDE7D300F679EC /* NetworkingService.swift in Sources */,
+				98D65BE92815B30900C7596A /* DetailViewModel.swift in Sources */,
 				98D65BD928130F1900C7596A /* CoinService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,6 +9,7 @@ import Foundation
 
 protocol CoinServiceProtocol {
     func fetchCoins(order: CoinOrder, currencyInUSD: Bool, page: Int, completion: @escaping (Result<[CoinGeckoModel], CoinGeckoError>) -> Void)
+    func fetchCoinDetail(coinId: String, completion: @escaping (Result<CoinGeckoDetailModel, CoinGeckoError>) -> Void)
 }
 
 class CoinService: CoinServiceProtocol {
@@ -22,6 +23,12 @@ class CoinService: CoinServiceProtocol {
             "sparkline": "false",
         ]
         NetworkingService.shared.request(.get, .getCoinMarkets, headers: [:], parameters: parameters, responseType: [CoinGeckoModel].self) { result in
+            completion(result)
+        }
+    }
+    
+    func fetchCoinDetail(coinId: String, completion: @escaping (Result<CoinGeckoDetailModel, CoinGeckoError>) -> Void) {
+        NetworkingService.shared.request(.get, .getCoinDetails(coinId: coinId), headers: [:], parameters: [:], responseType: CoinGeckoDetailModel.self) { result in
             completion(result)
         }
     }

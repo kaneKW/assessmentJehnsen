@@ -10,7 +10,8 @@ import UIKit
 class DetailView: UIView {
     private lazy var nameLabel: UILabel = {
         let view = UILabel()
-        view.text = "dummy"
+        view.text = "ini name"
+        view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -24,59 +25,56 @@ class DetailView: UIView {
     
     private lazy var symbolLabel: UILabel = {
         let view = UILabel()
-        view.text = "dummy"
+        view.text = "ini symbol"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var currentUSDPrice: UILabel = {
         let view = UILabel()
-        view.text = "dummy"
+        view.text = "ini current price"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var marketCapLabel: UILabel = {
         let view = UILabel()
-        view.text = "dummy"
+        view.text = "ini market cap"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var marketCapRank: UILabel = {
         let view = UILabel()
-        view.text = "dummy"
+        view.text = "ini market cap rank"
+        view.adjustsFontSizeToFitWidth = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var segmentTitleLabel: UILabel = {
         let view = UILabel()
-        view.text = "dummy"
+        view.text = "Current Price Change Percentage "
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var segmentValueLabel: UILabel = {
         let view = UILabel()
-        view.text = "ini value"
+        view.text = "ini segment value"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var segmentedView: UISegmentedControl = {
         let view = UISegmentedControl()
-        view.setTitle("1", forSegmentAt: 0)
-        view.setTitle("2", forSegmentAt: 1)
-        view.setTitle("3", forSegmentAt: 2)
-        view.setTitle("4", forSegmentAt: 3)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var assetDescription: UITextView = {
         let view = UITextView()
-        view.text = "dummy"
+        view.text = "ini description"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -88,6 +86,31 @@ class DetailView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func updateContent(data: CoinGeckoDetailModel) {
+        DispatchQueue.main.async {
+            self.symbolLabel.text = data.symbolLabel
+            
+            if let marketCapRank = data.marketCapRank, let marketCap = data.marketData?.coinMarketCap?.marketCapUSD {
+                self.marketCapRank.text = "Market Cap Rank \(String(describing: marketCapRank)) with market cap \(marketCap.description) USD"
+            }
+            
+            if let currentPrice = data.marketData?.currentPrice?.usd {
+                self.currentUSDPrice.text =  "Current Price \(currentPrice.description) USD"
+            }
+            
+            if let description = data.description?.en {
+                self.assetDescription.attributedText = description.htmlToAttributedString
+            }
+            
+            
+            if let url = URL(string: data.iconUrl?.largeImage ?? "") {
+                self.iconImage.load(url: url)
+            }
+            
+        }
+        
     }
     
     private func setupLayout() {
@@ -103,46 +126,49 @@ class DetailView: UIView {
         addSubview(assetDescription)
         
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
+            nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
         
         NSLayoutConstraint.activate([
-            iconImage.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 16),
-            iconImage.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImage.heightAnchor.constraint(equalToConstant: 200),
-            iconImage.widthAnchor.constraint(equalToConstant: 200),
+            iconImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            iconImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            iconImage.heightAnchor.constraint(equalToConstant: 150),
+            iconImage.widthAnchor.constraint(equalToConstant: 150),
         ])
         
         NSLayoutConstraint.activate([
             symbolLabel.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 24),
-            symbolLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            symbolLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
         
         NSLayoutConstraint.activate([
             currentUSDPrice.centerYAnchor.constraint(equalTo: symbolLabel.centerYAnchor, constant: 0),
-            currentUSDPrice.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            currentUSDPrice.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
         
         NSLayoutConstraint.activate([
             marketCapRank.topAnchor.constraint(equalTo: currentUSDPrice.bottomAnchor, constant: 16),
             marketCapRank.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            marketCapRank.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
         ])
         
         NSLayoutConstraint.activate([
             marketCapLabel.centerYAnchor.constraint(equalTo: marketCapRank.centerYAnchor, constant: 0),
-            marketCapLabel.leadingAnchor.constraint(equalTo: marketCapRank.trailingAnchor, constant: -16),
+            marketCapLabel.leadingAnchor.constraint(equalTo: marketCapRank.trailingAnchor, constant: 16),
         ])
         
         NSLayoutConstraint.activate([
             segmentTitleLabel.topAnchor.constraint(equalTo: marketCapLabel.bottomAnchor, constant: 16),
-            segmentTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            segmentTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
         
         NSLayoutConstraint.activate([
             segmentedView.topAnchor.constraint(equalTo: segmentTitleLabel.bottomAnchor, constant: 16),
-            segmentedView.leadingAnchor.constraint(equalTo: segmentTitleLabel.trailingAnchor, constant: -16),
+            segmentedView.leadingAnchor.constraint(equalTo: segmentTitleLabel.trailingAnchor, constant: 16),
+            segmentedView.trailingAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            segmentedView.heightAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
@@ -152,8 +178,8 @@ class DetailView: UIView {
         
         NSLayoutConstraint.activate([
             assetDescription.topAnchor.constraint(equalTo: segmentValueLabel.bottomAnchor, constant: 16),
-            assetDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            assetDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            assetDescription.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            assetDescription.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             assetDescription.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
         ])
     }

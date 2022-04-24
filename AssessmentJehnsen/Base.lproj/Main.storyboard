@@ -12,12 +12,26 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="AssessmentJehnsen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="viewController" id="BYZ-38-t0r" customClass="ViewController" customModule="AssessmentJehnsen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ata-r2-xjF">
+                                <rect key="frame" x="179" y="432.5" width="56" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Start"/>
+                                <connections>
+                                    <action selector="startPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mW3-s4-fpr"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ata-r2-xjF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="BWK-6s-VTb"/>
+                            <constraint firstItem="ata-r2-xjF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b7S-YG-cGH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

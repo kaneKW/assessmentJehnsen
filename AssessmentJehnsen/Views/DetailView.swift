@@ -54,7 +54,9 @@ class DetailView: UIView {
     
     private lazy var segmentTitleLabel: UILabel = {
         let view = UILabel()
-        view.text = "Current Price Change Percentage "
+        view.numberOfLines = 3
+        view.text = "Current Price Change Percentage"
+        view.adjustsFontSizeToFitWidth = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -67,17 +69,42 @@ class DetailView: UIView {
     }()
     
     private lazy var segmentedView: UISegmentedControl = {
-        let view = UISegmentedControl()
+        let timePriceChangePrecentage = ["24 hour", "7 day", "30 day", "1 year"]
+        let view = UISegmentedControl(items: timePriceChangePrecentage)
+        view.selectedSegmentIndex = 0
+        view.addTarget(self, action: #selector(didTapSegmentedView), for: .valueChanged)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var assetDescription: UITextView = {
         let view = UITextView()
+        view.isEditable = false
         view.text = "ini description"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    @objc private func didTapSegmentedView(sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            segmentValueLabel.text = data?.marketData?.priceChange24h?.description
+        case 1:
+            segmentValueLabel.text = data?.marketData?.priceChange7d?.description
+        case 2:
+            segmentValueLabel.text = data?.marketData?.priceChange30d?.description
+        case 3:
+            segmentValueLabel.text = data?.marketData?.priceChange1y?.description
+        default:
+            return
+        }
+    }
+    
+    var data: CoinGeckoDetailModel? {
+        didSet {
+            updateContent()
+        }
+    }
     
     init() {
         super.init(frame: .zero)
@@ -88,7 +115,8 @@ class DetailView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateContent(data: CoinGeckoDetailModel) {
+    func updateContent() {
+        guard let data = data else {return}
         DispatchQueue.main.async {
             self.symbolLabel.text = data.symbolLabel
             
@@ -104,13 +132,14 @@ class DetailView: UIView {
                 self.assetDescription.attributedText = description.htmlToAttributedString
             }
             
+            if let priceChange24 = data.marketData?.priceChange24h {
+                self.segmentValueLabel.text = priceChange24.description
+            }
             
             if let url = URL(string: data.iconUrl?.largeImage ?? "") {
                 self.iconImage.load(url: url)
             }
-            
         }
-        
     }
     
     private func setupLayout() {
@@ -162,17 +191,18 @@ class DetailView: UIView {
         NSLayoutConstraint.activate([
             segmentTitleLabel.topAnchor.constraint(equalTo: marketCapLabel.bottomAnchor, constant: 16),
             segmentTitleLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            segmentTitleLabel.trailingAnchor.constraint(equalTo: segmentedView.leadingAnchor, constant: -16),
         ])
         
         NSLayoutConstraint.activate([
-            segmentedView.topAnchor.constraint(equalTo: segmentTitleLabel.bottomAnchor, constant: 16),
-            segmentedView.leadingAnchor.constraint(equalTo: segmentTitleLabel.trailingAnchor, constant: 16),
+            segmentedView.centerYAnchor.constraint(equalTo: segmentTitleLabel.centerYAnchor),
             segmentedView.trailingAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            segmentedView.heightAnchor.constraint(equalToConstant: 100)
+            segmentedView.heightAnchor.constraint(equalToConstant: 50),
+            segmentedView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 2/3)
         ])
         
         NSLayoutConstraint.activate([
-            segmentValueLabel.topAnchor.constraint(equalTo: segmentTitleLabel.bottomAnchor, constant: 16),
+            segmentValueLabel.topAnchor.constraint(equalTo: segmentedView.bottomAnchor, constant: 16),
             segmentValueLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0),
         ])
         

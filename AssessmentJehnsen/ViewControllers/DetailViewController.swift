@@ -36,7 +36,6 @@ class DetailViewController: UIViewController {
             baseView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             baseView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        
         viewModel.onFinishFetchCoinDetail = didFinishFetchCoin
         viewModel.getCoinDetail()
     }
@@ -47,7 +46,7 @@ class DetailViewController: UIViewController {
             return
         }
         guard let data = viewModel.coinDetailData else {return}
-        baseView.updateContent(data: data)
+        baseView.data = data
         DispatchQueue.main.async {
             self.navigationItem.title = data.name ?? "Coin"
         }

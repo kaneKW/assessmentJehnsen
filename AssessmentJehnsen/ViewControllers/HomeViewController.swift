@@ -33,10 +33,23 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Coins"
+        setupNavBar()
         setupView()
         indicatorView.startAnimating()
         viewModel.fetchCoins()
+    }
+    
+    private func setupNavBar() {
+        navigationItem.title = "Coins"
+        let sortingButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(filterTapped))
+        let sortingbUtton = UIBarButtonItem(
+//        let play = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(playTapped))
+
+//        navigationItem.rightBarButtonItems = [add, play]
+    }
+    
+    private func filterTapped() {
+        
     }
     
     private func didFinishFetchCoin(_ message: String?) {

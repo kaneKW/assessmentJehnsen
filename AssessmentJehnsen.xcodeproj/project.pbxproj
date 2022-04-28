@@ -18,6 +18,8 @@
 		9812FBC727DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBC627DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift */; };
 		9812FBD927DDDD1400F679EC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */; };
 		9812FBDB27DDE7D300F679EC /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBDA27DDE7D300F679EC /* NetworkingService.swift */; };
+		98A88B9F281AA394000F3B5C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A88B9E281AA394000F3B5C /* SettingsView.swift */; };
+		98A88BA1281AAC7B000F3B5C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A88BA0281AAC7B000F3B5C /* SettingsViewController.swift */; };
 		98D65BCC2812AFF000C7596A /* CoinGeckoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BCB2812AFF000C7596A /* CoinGeckoModel.swift */; };
 		98D65BCE2812B0FB00C7596A /* CoinGeckoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BCD2812B0FB00C7596A /* CoinGeckoError.swift */; };
 		98D65BD328130BD900C7596A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BD228130BD900C7596A /* HomeViewModel.swift */; };
@@ -64,6 +66,8 @@
 		9812FBC627DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentJehnsenUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		9812FBDA27DDE7D300F679EC /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		98A88B9E281AA394000F3B5C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		98A88BA0281AAC7B000F3B5C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		98D65BCB2812AFF000C7596A /* CoinGeckoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoModel.swift; sourceTree = "<group>"; };
 		98D65BCD2812B0FB00C7596A /* CoinGeckoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoError.swift; sourceTree = "<group>"; };
 		98D65BD228130BD900C7596A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 				9812FBA727DDC4DE00F679EC /* ViewController.swift */,
 				98D65BE02815864800C7596A /* DetailViewController.swift */,
 				98D65BEA2815B8BA00C7596A /* HomeViewController.swift */,
+				98A88BA0281AAC7B000F3B5C /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 			children = (
 				9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */,
 				98D65BE3281588BF00C7596A /* DetailView.swift */,
+				98A88B9E281AA394000F3B5C /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 				9812FBA827DDC4DE00F679EC /* ViewController.swift in Sources */,
 				98D65BE62815952B00C7596A /* CoinGeckoDetailModel.swift in Sources */,
 				98D65BE12815864800C7596A /* DetailViewController.swift in Sources */,
+				98A88B9F281AA394000F3B5C /* SettingsView.swift in Sources */,
 				98D65BD328130BD900C7596A /* HomeViewModel.swift in Sources */,
 				9812FBD927DDDD1400F679EC /* HomeTableViewCell.swift in Sources */,
 				98D65BCE2812B0FB00C7596A /* CoinGeckoError.swift in Sources */,
@@ -377,6 +384,7 @@
 				9812FBDB27DDE7D300F679EC /* NetworkingService.swift in Sources */,
 				98D65BE92815B30900C7596A /* DetailViewModel.swift in Sources */,
 				98D65BD928130F1900C7596A /* CoinService.swift in Sources */,
+				98A88BA1281AAC7B000F3B5C /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

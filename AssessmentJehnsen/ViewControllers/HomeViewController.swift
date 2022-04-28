@@ -41,14 +41,13 @@ class HomeViewController: UIViewController {
     
     private func setupNavBar() {
         navigationItem.title = "Coins"
-        let sortingButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(filterTapped))
-        let sortingbUtton = UIBarButtonItem(
-//        let play = UIBarButtonItem(title: "Play", style: .plain, target: self, action: #selector(playTapped))
-
-//        navigationItem.rightBarButtonItems = [add, play]
+        let sortingButton = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal.decrease.circle"), style: .plain, target: self, action: #selector(filterTapped))
+        navigationItem.rightBarButtonItems = [sortingButton]
     }
     
-    private func filterTapped() {
+    @objc private func filterTapped() {
+        let vc = SettingsViewController()
+        present(vc, animated: true, completion: nil)
         
     }
     
@@ -102,6 +101,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let coin = viewModel.coinData[indexPath.row]
         guard let coinId = coin.idLabel else {
             return

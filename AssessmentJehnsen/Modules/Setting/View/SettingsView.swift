@@ -21,10 +21,11 @@ class SettingsView: UIView {
         return view
     }()
     
-    private lazy var settingColView: UICollectionView = {
+    lazy var settingColView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
 //        flowLayout.scrollDirection
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.register(SettingCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: SettingCollectionViewCell.self))
         view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -99,6 +100,5 @@ class SettingsView: UIView {
             settingColView.topAnchor.constraint(equalTo: grayLine.bottomAnchor, constant: 16),
             settingColView.bottomAnchor.constraint(equalTo: confirmContainerView.topAnchor)
         ])
-        
     }
 }

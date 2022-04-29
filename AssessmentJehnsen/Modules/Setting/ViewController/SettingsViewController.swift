@@ -10,6 +10,8 @@ import UIKit
 class SettingsViewController: UIViewController {
     private lazy var contentView: SettingsView = {
         let view = SettingsView()
+        view.settingColView.delegate = self
+        view.settingColView.dataSource = self
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -32,4 +34,17 @@ class SettingsViewController: UIViewController {
         
     }
 
+}
+
+extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SettingCollectionViewCell.self), for: indexPath) as? SettingCollectionViewCell else {
+            fatalError("wrong cell identifier")
+        }
+        return cell
+    }
 }

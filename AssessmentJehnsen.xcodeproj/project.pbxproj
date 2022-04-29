@@ -129,13 +129,9 @@
 		9812FBA227DDC4DE00F679EC /* AssessmentJehnsen */ = {
 			isa = PBXGroup;
 			children = (
+				9812FBA727DDC4DE00F679EC /* ViewController.swift */,
+				98A88BA2281B8AA8000F3B5C /* Modules */,
 				98D65BDD28131FCE00C7596A /* Application */,
-				98D65BDA28131F8200C7596A /* Extension */,
-				98D65BD528130DD500C7596A /* Utils */,
-				98D65BDE28131FF800C7596A /* Views */,
-				98D65BD128130B0E00C7596A /* Models */,
-				98D65BD028130B0800C7596A /* ViewModels */,
-				98D65BCF28130B0000C7596A /* ViewControllers */,
 				9812FBA927DDC4DE00F679EC /* Main.storyboard */,
 				9812FBAC27DDC4DF00F679EC /* Assets.xcassets */,
 				9812FBAE27DDC4DF00F679EC /* LaunchScreen.storyboard */,
@@ -161,24 +157,126 @@
 			path = AssessmentJehnsenUITests;
 			sourceTree = "<group>";
 		};
-		98D65BCF28130B0000C7596A /* ViewControllers */ = {
+		98A88BA2281B8AA8000F3B5C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				9812FBA727DDC4DE00F679EC /* ViewController.swift */,
-				98D65BE02815864800C7596A /* DetailViewController.swift */,
-				98D65BEA2815B8BA00C7596A /* HomeViewController.swift */,
-				98A88BA0281AAC7B000F3B5C /* SettingsViewController.swift */,
+				98D65BD128130B0E00C7596A /* Models */,
+				98A88BA5281B8AF3000F3B5C /* Setting */,
+				98A88BA4281B8ADA000F3B5C /* Detail */,
+				98A88BA3281B8ABB000F3B5C /* Home */,
+				98D65BD528130DD500C7596A /* Utils */,
+				98D65BDA28131F8200C7596A /* Extension */,
 			);
-			path = ViewControllers;
+			path = Modules;
 			sourceTree = "<group>";
 		};
-		98D65BD028130B0800C7596A /* ViewModels */ = {
+		98A88BA3281B8ABB000F3B5C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				98A88BAE281B8E43000F3B5C /* ViewController */,
+				98A88BAF281B8E48000F3B5C /* ViewModel */,
+				98A88BAC281B8E36000F3B5C /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		98A88BA4281B8ADA000F3B5C /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				98A88BAA281B8C9B000F3B5C /* View */,
+				98A88BAB281B8C9E000F3B5C /* ViewController */,
+				98A88BA8281B8C7B000F3B5C /* ViewModel */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		98A88BA5281B8AF3000F3B5C /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				98A88BA9281B8C83000F3B5C /* View */,
+				98A88BA7281B8C19000F3B5C /* ViewModel */,
+				98A88BA6281B8C0B000F3B5C /* ViewController */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		98A88BA6281B8C0B000F3B5C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98A88BA0281AAC7B000F3B5C /* SettingsViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		98A88BA7281B8C19000F3B5C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		98A88BA8281B8C7B000F3B5C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				98D65BE82815B30900C7596A /* DetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		98A88BA9281B8C83000F3B5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98A88B9E281AA394000F3B5C /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		98A88BAA281B8C9B000F3B5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98D65BE3281588BF00C7596A /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		98A88BAB281B8C9E000F3B5C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98D65BE02815864800C7596A /* DetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		98A88BAC281B8E36000F3B5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				98A88BAD281B8E40000F3B5C /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		98A88BAD281B8E40000F3B5C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		98A88BAE281B8E43000F3B5C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				98D65BEA2815B8BA00C7596A /* HomeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		98A88BAF281B8E48000F3B5C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				98D65BD228130BD900C7596A /* HomeViewModel.swift */,
-				98D65BE82815B30900C7596A /* DetailViewModel.swift */,
 			);
-			path = ViewModels;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		98D65BD128130B0E00C7596A /* Models */ = {
@@ -224,16 +322,6 @@
 				9812FBA527DDC4DE00F679EC /* SceneDelegate.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		98D65BDE28131FF800C7596A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */,
-				98D65BE3281588BF00C7596A /* DetailView.swift */,
-				98A88B9E281AA394000F3B5C /* SettingsView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

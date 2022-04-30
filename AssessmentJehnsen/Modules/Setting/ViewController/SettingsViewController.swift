@@ -31,10 +31,7 @@ class SettingsViewController: UIViewController {
     
     var didFinishConfigureSettings: ((_ order: CoinOrder?) -> Void)?
     private func handleConfirm() {
-        guard viewModel.selectedIndex != 99 else {
-            return
-        }
-        didFinishConfigureSettings?(viewModel.orderSettings[viewModel.selectedIndex])
+        didFinishConfigureSettings?(viewModel.selectedOrder)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -64,15 +61,17 @@ extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.orderSettings.count
+        return viewModel.orders.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SettingCollectionViewCell.self), for: indexPath) as? SettingCollectionViewCell else {
             fatalError("wrong cell identifier")
         }
-        cell.titleText = viewModel.orderSettings[indexPath.row].title
-        if indexPath.row == viewModel.selectedIndex {
+        let order = viewModel.orders[indexPath.row]
+        cell.titleText = order.title
+        
+        if order == viewModel.selectedOrder {
             cell.setSelected()
         } else {
             cell.setUnselected()
@@ -81,7 +80,7 @@ extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectedIndex = indexPath.row
+        viewModel.selectedOrder = viewModel.orders[indexPath.row]
         collectionView.reloadData()
     }
     
@@ -99,7 +98,7 @@ extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDe
 
 extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = viewModel.orderSettings[indexPath.row].title
+        let item = viewModel.orders[indexPath.row].title
         let itemSize = item.size(withAttributes: [
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)
         ])

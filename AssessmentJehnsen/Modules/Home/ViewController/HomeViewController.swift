@@ -47,6 +47,13 @@ class HomeViewController: UIViewController {
     
     @objc private func filterTapped() {
         let vc = SettingsViewController()
+        vc.didFinishConfigureSettings = { orderSetting in
+            if self.viewModel.fetchOrder != orderSetting {
+                self.viewModel.fetchOrder = orderSetting ?? .market_cap_desc
+                self.viewModel.page = 0
+                self.viewModel.fetchCoins()
+            }
+        }
         present(vc, animated: true, completion: nil)
         
     }

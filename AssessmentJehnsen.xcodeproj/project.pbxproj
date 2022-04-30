@@ -34,6 +34,7 @@
 		98D65BE62815952B00C7596A /* CoinGeckoDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE52815952B00C7596A /* CoinGeckoDetailModel.swift */; };
 		98D65BE92815B30900C7596A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE82815B30900C7596A /* DetailViewModel.swift */; };
 		98D65BEB2815B8BA00C7596A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BEA2815B8BA00C7596A /* HomeViewController.swift */; };
+		FA6C2729281D04A500DAE1C8 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C2728281D04A500DAE1C8 /* SettingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		98D65BE52815952B00C7596A /* CoinGeckoDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoDetailModel.swift; sourceTree = "<group>"; };
 		98D65BE82815B30900C7596A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		98D65BEA2815B8BA00C7596A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FA6C2728281D04A500DAE1C8 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +303,7 @@
 			children = (
 				98D65BCB2812AFF000C7596A /* CoinGeckoModel.swift */,
 				98D65BE52815952B00C7596A /* CoinGeckoDetailModel.swift */,
+				FA6C2728281D04A500DAE1C8 /* SettingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6C2729281D04A500DAE1C8 /* SettingModel.swift in Sources */,
 				98A88BB2281B8F15000F3B5C /* SettingCollectionViewCell.swift in Sources */,
 				98A88BB6281B901D000F3B5C /* SettingViewModel.swift in Sources */,
 				98D65BDC28131F9900C7596A /* Extension.swift in Sources */,

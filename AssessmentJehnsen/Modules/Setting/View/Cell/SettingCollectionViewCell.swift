@@ -14,9 +14,15 @@ class SettingCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
+    var titleText: String? {
+        didSet {
+            itemView.titleLabel.text = titleText
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .clear
         isUserInteractionEnabled = true
         translatesAutoresizingMaskIntoConstraints = false
         setupLayout()
@@ -34,5 +40,13 @@ class SettingCollectionViewCell: UICollectionViewCell {
             itemView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             itemView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
+    }
+    
+    func setSelected() {
+        itemView.labelContainerView.layer.borderColor = UIColor.green.cgColor
+    }
+    
+    func setUnselected() {
+        itemView.labelContainerView.layer.borderColor = UIColor.lightGray.cgColor
     }
 }

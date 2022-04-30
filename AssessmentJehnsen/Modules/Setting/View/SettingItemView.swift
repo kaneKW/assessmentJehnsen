@@ -8,17 +8,20 @@
 import UIKit
 
 class SettingItemView: UIView {
-    private lazy var labelContainerView: UIView = {
+    lazy var labelContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.lightGray.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = false
         return view
     }()
 
-    private lazy var titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "asdasdasdas"
+        label.font = .systemFont(ofSize: 16)
         label.textAlignment = .center
         label.numberOfLines = 1
         label.lineBreakMode = .byWordWrapping
@@ -26,23 +29,12 @@ class SettingItemView: UIView {
         return label
     }()
 
-//    var didTapView: ((_ view: KoinBillProductItemView) -> Void)?
-
     init() {
         super.init(frame: .zero)
         backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
-
-//        if isNeedAddTapGesture {
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapProductItem))
-//            addGestureRecognizer(tapGesture)
-//        }
         setupLayout()
     }
-
-//    @objc private func didTapProductItem() {
-//        didTapView?(self)
-//    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -50,7 +42,10 @@ class SettingItemView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        labelContainerView.layer.cornerRadius = 8
+        backgroundColor = .white
+        
+        layer.cornerRadius = 10
+        labelContainerView.layer.cornerRadius = 10
     }
 
     private func setupLayout() {
@@ -60,9 +55,6 @@ class SettingItemView: UIView {
             labelContainerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
             labelContainerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             labelContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
-//            labelContainerView.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            labelContainerView.widthAnchor.constraint(equalToConstant: 60),
-//            labelContainerView.heightAnchor.constraint(equalToConstant: 60)
         ])
         
         labelContainerView.addSubview(titleLabel)
@@ -72,15 +64,5 @@ class SettingItemView: UIView {
             titleLabel.leadingAnchor.constraint(equalTo: labelContainerView.leadingAnchor, constant: 4),
             titleLabel.trailingAnchor.constraint(equalTo: labelContainerView.trailingAnchor, constant: -4),
         ])
-
     }
-//
-//    func setupContent(_ product: KoinBillProduct) {
-//        if let url = product.iconUrl, !url.isEmpty, let imageUrl = URL(string: url) {
-//            iconImageView.load(url: imageUrl)
-//        } else {
-//            iconImageView.image = nil
-//        }
-//        titleLabel.text = product.name
-//    }
 }

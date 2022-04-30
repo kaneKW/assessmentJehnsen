@@ -88,13 +88,13 @@ class DetailView: UIView {
     @objc private func didTapSegmentedView(sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            segmentValueLabel.text = data?.marketData?.priceChange24h?.description
+            segmentValueLabel.text = (data?.marketData?.priceChange24h?.description ?? "") + "%"
         case 1:
-            segmentValueLabel.text = data?.marketData?.priceChange7d?.description
+            segmentValueLabel.text = (data?.marketData?.priceChange7d?.description ?? "") + "%"
         case 2:
-            segmentValueLabel.text = data?.marketData?.priceChange30d?.description
+            segmentValueLabel.text = (data?.marketData?.priceChange30d?.description ?? "") + "%"
         case 3:
-            segmentValueLabel.text = data?.marketData?.priceChange1y?.description
+            segmentValueLabel.text = (data?.marketData?.priceChange1y?.description ?? "") + "%"
         default:
             return
         }
@@ -133,7 +133,7 @@ class DetailView: UIView {
             }
             
             if let priceChange24 = data.marketData?.priceChange24h {
-                self.segmentValueLabel.text = priceChange24.description
+                self.segmentValueLabel.text = (priceChange24.description) + "%"
             }
             
             if let url = URL(string: data.iconUrl?.largeImage ?? "") {

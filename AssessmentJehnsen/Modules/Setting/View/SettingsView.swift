@@ -8,12 +8,23 @@
 import UIKit
 
 class SettingsView: UIView {
-    private lazy var customContainerView: UIView = {
+    private lazy var shadowView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        let dismissTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapShadowView))
+        view.addGestureRecognizer(dismissTapGesture)
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    private lazy var customContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 15
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var grayLine: UIView = {
         let view = UIView()
         view.backgroundColor = .gray
@@ -23,10 +34,8 @@ class SettingsView: UIView {
     
     lazy var settingColView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.scrollDirection
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.register(SettingCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: SettingCollectionViewCell.self))
-        view.backgroundColor = .red
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -40,6 +49,8 @@ class SettingsView: UIView {
     
     private lazy var confirmButton: UIButton = {
         let view = UIButton()
+        view.setTitle("Confirm", for: .normal)
+        view.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
         view.backgroundColor = .blue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -50,23 +61,40 @@ class SettingsView: UIView {
         setupLayout()
     }
     
+    var onTapShadowView: (() -> Void)?
+    @objc private func didTapShadowView() {
+        onTapShadowView?()
+    }
+    
+    var onTapConfirm: (() -> Void)?
+    @objc private func didTapConfirmButton() {
+        onTapConfirm?()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setupLayout() {
+        addSubview(shadowView)
         addSubview(customContainerView)
+
         customContainerView.addSubview(grayLine)
         customContainerView.addSubview(settingColView)
         customContainerView.addSubview(confirmContainerView)
         confirmContainerView.addSubview(confirmButton)
         
         NSLayoutConstraint.activate([
+            shadowView.topAnchor.constraint(equalTo: topAnchor),
+            shadowView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            shadowView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            shadowView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
             customContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             customContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             customContainerView.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            customContainerView.topAnchor.constraint(equalTo: topAnchor)
-//            customContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 2/3)
             customContainerView.heightAnchor.constraint(equalToConstant: 500)
         ])
         
@@ -85,18 +113,15 @@ class SettingsView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-//            confirmButton.centerXAnchor.constraint(equalTo: confirmContainerView.centerXAnchor),
-//            confirmButton.centerYAnchor.constraint(equalTo: confirmContainerView.centerYAnchor),
             confirmButton.topAnchor.constraint(equalTo: confirmContainerView.topAnchor, constant: 16),
             confirmButton.bottomAnchor.constraint(equalTo: confirmContainerView.bottomAnchor, constant: -32),
             confirmButton.leadingAnchor.constraint(equalTo: confirmContainerView.leadingAnchor, constant: 16),
             confirmButton.trailingAnchor.constraint(equalTo: confirmContainerView.trailingAnchor, constant: -16),
-//            confirmButton.heightAnchor.constraint(equalToConstant: 52)
         ])
         
         NSLayoutConstraint.activate([
-            settingColView.leadingAnchor.constraint(equalTo: customContainerView.leadingAnchor),
-            settingColView.trailingAnchor.constraint(equalTo: customContainerView.trailingAnchor),
+            settingColView.leadingAnchor.constraint(equalTo: customContainerView.leadingAnchor, constant: 16),
+            settingColView.trailingAnchor.constraint(equalTo: customContainerView.trailingAnchor, constant: -16),
             settingColView.topAnchor.constraint(equalTo: grayLine.bottomAnchor, constant: 16),
             settingColView.bottomAnchor.constraint(equalTo: confirmContainerView.topAnchor)
         ])

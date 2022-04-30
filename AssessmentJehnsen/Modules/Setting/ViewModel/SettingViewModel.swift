@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+class SettingViewModel {
+    var selectedIndex = 99
+    var orderSettings = CoinOrder.allCases
+}

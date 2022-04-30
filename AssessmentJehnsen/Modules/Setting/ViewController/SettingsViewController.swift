@@ -59,6 +59,10 @@ class SettingsViewController: UIViewController {
 }
 
 extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.orderSettings.count
     }
@@ -80,11 +84,22 @@ extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDe
         viewModel.selectedIndex = indexPath.row
         collectionView.reloadData()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let view = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: String(describing: SettingCollectionHeaderView.self),
+            for: indexPath) as? SettingCollectionHeaderView else {
+                fatalError("Wrong Supplementary View")
+            }
+        view.setupContent(text: "Sort based on")
+        return view
+    }
 }
 
 extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = viewModel.orderSettings[indexPath.row].rawValue
+        let item = viewModel.orderSettings[indexPath.row].title
         let itemSize = item.size(withAttributes: [
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)
         ])

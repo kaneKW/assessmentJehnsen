@@ -34,8 +34,10 @@ class SettingsView: UIView {
     
     lazy var settingColView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 45)
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.register(SettingCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: SettingCollectionViewCell.self))
+        view.register(SettingCollectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: SettingCollectionHeaderView.self))
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

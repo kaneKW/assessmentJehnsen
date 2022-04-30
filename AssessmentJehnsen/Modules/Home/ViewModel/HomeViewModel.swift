@@ -10,9 +10,14 @@ import Foundation
 class HomeViewModel {
     let service: CoinServiceProtocol
     var coinData = [CoinGeckoModel]()
-    var fetchOrder: CoinOrder = .market_cap_desc
+    var fetchOrder: CoinOrder = .market_cap_desc {
+        didSet {
+            
+        }
+    }
     var currencyInUSD: Bool = true
     var page = 1
+    let userDefault = UserDefaults.standard
     var currentCount: Int {
       return coinData.count
     }

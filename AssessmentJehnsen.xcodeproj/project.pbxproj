@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DEB2178CEE75548F567F8D6 /* Pods_AssessmentJehnsen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EED51413AD1CF7960BE5897 /* Pods_AssessmentJehnsen.framework */; };
 		9812FBA427DDC4DE00F679EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBA327DDC4DE00F679EC /* AppDelegate.swift */; };
 		9812FBA627DDC4DE00F679EC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBA527DDC4DE00F679EC /* SceneDelegate.swift */; };
 		9812FBA827DDC4DE00F679EC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBA727DDC4DE00F679EC /* ViewController.swift */; };
 		9812FBAB27DDC4DE00F679EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9812FBA927DDC4DE00F679EC /* Main.storyboard */; };
 		9812FBAD27DDC4DF00F679EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9812FBAC27DDC4DF00F679EC /* Assets.xcassets */; };
 		9812FBB027DDC4DF00F679EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9812FBAE27DDC4DF00F679EC /* LaunchScreen.storyboard */; };
-		9812FBBB27DDC4E000F679EC /* AssessmentJehnsenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBBA27DDC4E000F679EC /* AssessmentJehnsenTests.swift */; };
 		9812FBC527DDC4E000F679EC /* AssessmentJehnsenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBC427DDC4E000F679EC /* AssessmentJehnsenUITests.swift */; };
 		9812FBC727DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBC627DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift */; };
 		9812FBD927DDDD1400F679EC /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBD827DDDD1400F679EC /* HomeTableViewCell.swift */; };
 		9812FBDB27DDE7D300F679EC /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9812FBDA27DDE7D300F679EC /* NetworkingService.swift */; };
 		98729DEE281DA57900812237 /* SettingCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98729DED281DA57900812237 /* SettingCollectionHeaderView.swift */; };
 		98729DF0281DD58500812237 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98729DEF281DD58500812237 /* UserDefaultManager.swift */; };
+		98729E19281F140E00812237 /* MockCoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98729E13281F140E00812237 /* MockCoinService.swift */; };
+		98729E1A281F140E00812237 /* MockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98729E14281F140E00812237 /* MockResponse.swift */; };
+		98729E1B281F140E00812237 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98729E15281F140E00812237 /* HomeService.swift */; };
+		98729E1C281F140E00812237 /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98729E18281F140E00812237 /* HomeViewModelTest.swift */; };
 		98A88B9F281AA394000F3B5C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A88B9E281AA394000F3B5C /* SettingsView.swift */; };
 		98A88BA1281AAC7B000F3B5C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A88BA0281AAC7B000F3B5C /* SettingsViewController.swift */; };
 		98A88BB2281B8F15000F3B5C /* SettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A88BB1281B8F15000F3B5C /* SettingCollectionViewCell.swift */; };
@@ -36,6 +40,8 @@
 		98D65BE62815952B00C7596A /* CoinGeckoDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE52815952B00C7596A /* CoinGeckoDetailModel.swift */; };
 		98D65BE92815B30900C7596A /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BE82815B30900C7596A /* DetailViewModel.swift */; };
 		98D65BEB2815B8BA00C7596A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D65BEA2815B8BA00C7596A /* HomeViewController.swift */; };
+		B29C5F5F6D93D1BF4440B21C /* Pods_AssessmentJehnsen_AssessmentJehnsenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66F1C96A2D72A2D17AF1CD4C /* Pods_AssessmentJehnsen_AssessmentJehnsenUITests.framework */; };
+		C9177745F92F57B69AB4F5B2 /* Pods_AssessmentJehnsenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6B93DD6E44535C24F249EE5 /* Pods_AssessmentJehnsenTests.framework */; };
 		FA6C2729281D04A500DAE1C8 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6C2728281D04A500DAE1C8 /* SettingModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +63,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0EED51413AD1CF7960BE5897 /* Pods_AssessmentJehnsen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssessmentJehnsen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		158347C7386352654D854526 /* Pods-AssessmentJehnsen-AssessmentJehnsenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssessmentJehnsen-AssessmentJehnsenUITests.debug.xcconfig"; path = "Target Support Files/Pods-AssessmentJehnsen-AssessmentJehnsenUITests/Pods-AssessmentJehnsen-AssessmentJehnsenUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4029C2BC62E22F274D9EB65A /* Pods-AssessmentJehnsenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssessmentJehnsenTests.release.xcconfig"; path = "Target Support Files/Pods-AssessmentJehnsenTests/Pods-AssessmentJehnsenTests.release.xcconfig"; sourceTree = "<group>"; };
+		66F1C96A2D72A2D17AF1CD4C /* Pods_AssessmentJehnsen_AssessmentJehnsenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssessmentJehnsen_AssessmentJehnsenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		731AAAC2788ED0515E6E0A85 /* Pods-AssessmentJehnsen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssessmentJehnsen.debug.xcconfig"; path = "Target Support Files/Pods-AssessmentJehnsen/Pods-AssessmentJehnsen.debug.xcconfig"; sourceTree = "<group>"; };
 		9812FBA027DDC4DE00F679EC /* AssessmentJehnsen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssessmentJehnsen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9812FBA327DDC4DE00F679EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9812FBA527DDC4DE00F679EC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +77,6 @@
 		9812FBAF27DDC4DF00F679EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9812FBB127DDC4DF00F679EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9812FBB627DDC4E000F679EC /* AssessmentJehnsenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssessmentJehnsenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9812FBBA27DDC4E000F679EC /* AssessmentJehnsenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentJehnsenTests.swift; sourceTree = "<group>"; };
 		9812FBC027DDC4E000F679EC /* AssessmentJehnsenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssessmentJehnsenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9812FBC427DDC4E000F679EC /* AssessmentJehnsenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentJehnsenUITests.swift; sourceTree = "<group>"; };
 		9812FBC627DDC4E000F679EC /* AssessmentJehnsenUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssessmentJehnsenUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -74,6 +84,10 @@
 		9812FBDA27DDE7D300F679EC /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		98729DED281DA57900812237 /* SettingCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionHeaderView.swift; sourceTree = "<group>"; };
 		98729DEF281DD58500812237 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		98729E13281F140E00812237 /* MockCoinService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCoinService.swift; sourceTree = "<group>"; };
+		98729E14281F140E00812237 /* MockResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockResponse.swift; sourceTree = "<group>"; };
+		98729E15281F140E00812237 /* HomeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		98729E18281F140E00812237 /* HomeViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
 		98A88B9E281AA394000F3B5C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		98A88BA0281AAC7B000F3B5C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		98A88BB1281B8F15000F3B5C /* SettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -90,6 +104,10 @@
 		98D65BE52815952B00C7596A /* CoinGeckoDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinGeckoDetailModel.swift; sourceTree = "<group>"; };
 		98D65BE82815B30900C7596A /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		98D65BEA2815B8BA00C7596A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A6B93DD6E44535C24F249EE5 /* Pods_AssessmentJehnsenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssessmentJehnsenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8053D95AEAC0E4225816B79 /* Pods-AssessmentJehnsen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssessmentJehnsen.release.xcconfig"; path = "Target Support Files/Pods-AssessmentJehnsen/Pods-AssessmentJehnsen.release.xcconfig"; sourceTree = "<group>"; };
+		D4A02AC578FB69077B95C0FA /* Pods-AssessmentJehnsenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssessmentJehnsenTests.debug.xcconfig"; path = "Target Support Files/Pods-AssessmentJehnsenTests/Pods-AssessmentJehnsenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E4CC5F48A9BD93513671DB14 /* Pods-AssessmentJehnsen-AssessmentJehnsenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssessmentJehnsen-AssessmentJehnsenUITests.release.xcconfig"; path = "Target Support Files/Pods-AssessmentJehnsen-AssessmentJehnsenUITests/Pods-AssessmentJehnsen-AssessmentJehnsenUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FA6C2728281D04A500DAE1C8 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEB2178CEE75548F567F8D6 /* Pods_AssessmentJehnsen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9177745F92F57B69AB4F5B2 /* Pods_AssessmentJehnsenTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,12 +132,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B29C5F5F6D93D1BF4440B21C /* Pods_AssessmentJehnsen_AssessmentJehnsenUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B1D2B8CA164789F99E485F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0EED51413AD1CF7960BE5897 /* Pods_AssessmentJehnsen.framework */,
+				66F1C96A2D72A2D17AF1CD4C /* Pods_AssessmentJehnsen_AssessmentJehnsenUITests.framework */,
+				A6B93DD6E44535C24F249EE5 /* Pods_AssessmentJehnsenTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9812FB9727DDC4DE00F679EC = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +156,8 @@
 				9812FBB927DDC4E000F679EC /* AssessmentJehnsenTests */,
 				9812FBC327DDC4E000F679EC /* AssessmentJehnsenUITests */,
 				9812FBA127DDC4DE00F679EC /* Products */,
+				B9218091CE7A92DA48319838 /* Pods */,
+				3B1D2B8CA164789F99E485F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,11 +175,10 @@
 			isa = PBXGroup;
 			children = (
 				9812FBA727DDC4DE00F679EC /* ViewController.swift */,
+				9812FBA927DDC4DE00F679EC /* Main.storyboard */,
+				9812FBAE27DDC4DF00F679EC /* LaunchScreen.storyboard */,
 				98A88BA2281B8AA8000F3B5C /* Modules */,
 				98D65BDD28131FCE00C7596A /* Application */,
-				9812FBA927DDC4DE00F679EC /* Main.storyboard */,
-				9812FBAC27DDC4DF00F679EC /* Assets.xcassets */,
-				9812FBAE27DDC4DF00F679EC /* LaunchScreen.storyboard */,
 				9812FBB127DDC4DF00F679EC /* Info.plist */,
 			);
 			path = AssessmentJehnsen;
@@ -155,7 +187,8 @@
 		9812FBB927DDC4E000F679EC /* AssessmentJehnsenTests */ = {
 			isa = PBXGroup;
 			children = (
-				9812FBBA27DDC4E000F679EC /* AssessmentJehnsenTests.swift */,
+				98729E16281F140E00812237 /* Home */,
+				98729E12281F140E00812237 /* Shared */,
 			);
 			path = AssessmentJehnsenTests;
 			sourceTree = "<group>";
@@ -169,9 +202,36 @@
 			path = AssessmentJehnsenUITests;
 			sourceTree = "<group>";
 		};
+		98729E12281F140E00812237 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				98729E13281F140E00812237 /* MockCoinService.swift */,
+				98729E14281F140E00812237 /* MockResponse.swift */,
+				98729E15281F140E00812237 /* HomeService.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		98729E16281F140E00812237 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				98729E17281F140E00812237 /* MockData */,
+				98729E18281F140E00812237 /* HomeViewModelTest.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		98729E17281F140E00812237 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
 		98A88BA2281B8AA8000F3B5C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9812FBAC27DDC4DF00F679EC /* Assets.xcassets */,
 				98D65BD128130B0E00C7596A /* Models */,
 				98A88BA5281B8AF3000F3B5C /* Setting */,
 				98A88BA4281B8ADA000F3B5C /* Detail */,
@@ -350,6 +410,19 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		B9218091CE7A92DA48319838 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				731AAAC2788ED0515E6E0A85 /* Pods-AssessmentJehnsen.debug.xcconfig */,
+				B8053D95AEAC0E4225816B79 /* Pods-AssessmentJehnsen.release.xcconfig */,
+				158347C7386352654D854526 /* Pods-AssessmentJehnsen-AssessmentJehnsenUITests.debug.xcconfig */,
+				E4CC5F48A9BD93513671DB14 /* Pods-AssessmentJehnsen-AssessmentJehnsenUITests.release.xcconfig */,
+				D4A02AC578FB69077B95C0FA /* Pods-AssessmentJehnsenTests.debug.xcconfig */,
+				4029C2BC62E22F274D9EB65A /* Pods-AssessmentJehnsenTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -357,6 +430,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9812FBCA27DDC4E000F679EC /* Build configuration list for PBXNativeTarget "AssessmentJehnsen" */;
 			buildPhases = (
+				C648D774BFB986CAB123151A /* [CP] Check Pods Manifest.lock */,
 				9812FB9C27DDC4DE00F679EC /* Sources */,
 				9812FB9D27DDC4DE00F679EC /* Frameworks */,
 				9812FB9E27DDC4DE00F679EC /* Resources */,
@@ -374,9 +448,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9812FBCD27DDC4E000F679EC /* Build configuration list for PBXNativeTarget "AssessmentJehnsenTests" */;
 			buildPhases = (
+				710CA1466E065CF5A8BFABCF /* [CP] Check Pods Manifest.lock */,
 				9812FBB227DDC4E000F679EC /* Sources */,
 				9812FBB327DDC4E000F679EC /* Frameworks */,
 				9812FBB427DDC4E000F679EC /* Resources */,
+				258AED88B3C6646D0AEA9736 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -392,6 +468,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9812FBD027DDC4E000F679EC /* Build configuration list for PBXNativeTarget "AssessmentJehnsenUITests" */;
 			buildPhases = (
+				C2D6E07A705F79071827CCA2 /* [CP] Check Pods Manifest.lock */,
 				9812FBBC27DDC4E000F679EC /* Sources */,
 				9812FBBD27DDC4E000F679EC /* Frameworks */,
 				9812FBBE27DDC4E000F679EC /* Resources */,
@@ -476,6 +553,92 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		258AED88B3C6646D0AEA9736 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AssessmentJehnsenTests/Pods-AssessmentJehnsenTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AssessmentJehnsenTests/Pods-AssessmentJehnsenTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AssessmentJehnsenTests/Pods-AssessmentJehnsenTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		710CA1466E065CF5A8BFABCF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AssessmentJehnsenTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C2D6E07A705F79071827CCA2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AssessmentJehnsen-AssessmentJehnsenUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C648D774BFB986CAB123151A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AssessmentJehnsen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9812FB9C27DDC4DE00F679EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -512,7 +675,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9812FBBB27DDC4E000F679EC /* AssessmentJehnsenTests.swift in Sources */,
+				98729E1B281F140E00812237 /* HomeService.swift in Sources */,
+				98729E1A281F140E00812237 /* MockResponse.swift in Sources */,
+				98729E19281F140E00812237 /* MockCoinService.swift in Sources */,
+				98729E1C281F140E00812237 /* HomeViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +844,7 @@
 		};
 		9812FBCB27DDC4E000F679EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 731AAAC2788ED0515E6E0A85 /* Pods-AssessmentJehnsen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -707,6 +874,7 @@
 		};
 		9812FBCC27DDC4E000F679EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8053D95AEAC0E4225816B79 /* Pods-AssessmentJehnsen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -736,6 +904,7 @@
 		};
 		9812FBCE27DDC4E000F679EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4A02AC578FB69077B95C0FA /* Pods-AssessmentJehnsenTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -756,6 +925,7 @@
 		};
 		9812FBCF27DDC4E000F679EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4029C2BC62E22F274D9EB65A /* Pods-AssessmentJehnsenTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -776,6 +946,7 @@
 		};
 		9812FBD127DDC4E000F679EC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 158347C7386352654D854526 /* Pods-AssessmentJehnsen-AssessmentJehnsenUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -794,6 +965,7 @@
 		};
 		9812FBD227DDC4E000F679EC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4CC5F48A9BD93513671DB14 /* Pods-AssessmentJehnsen-AssessmentJehnsenUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

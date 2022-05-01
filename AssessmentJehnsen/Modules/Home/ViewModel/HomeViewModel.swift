@@ -41,11 +41,8 @@ class HomeViewModel {
                     let indexPathsToReload = self.calculateIndexPathsToReload(from: response)
                     self.coinData += response
                     self.onFetchCompleted?(indexPathsToReload)
-                    
                 }
-
                 self.page += 1
-                
                 self.onFinishFetchCoin?(nil)
             case .failure(let error):
                 self.onFinishFetchCoin?(error.localizedDescription)

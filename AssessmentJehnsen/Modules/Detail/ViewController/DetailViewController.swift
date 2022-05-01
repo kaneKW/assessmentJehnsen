@@ -14,6 +14,13 @@ class DetailViewController: UIViewController {
         return view
     }()
     
+    lazy var indicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     let viewModel: DetailViewModel
     
     init(viewModel: DetailViewModel) {
@@ -27,27 +34,45 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "ini name"
+        setupLayout()
+        setupFunctionality()
+        indicatorView.startAnimating()
+        viewModel.getCoinDetail()
+    }
+    
+    private func setupLayout() {
         view.backgroundColor = .white
         view.addSubview(baseView)
+        view.addSubview(indicatorView)
         NSLayoutConstraint.activate([
             baseView.topAnchor.constraint(equalTo: view.topAnchor),
             baseView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             baseView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             baseView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
+        
+        NSLayoutConstraint.activate([
+            indicatorView.topAnchor.constraint(equalTo: view.topAnchor),
+            indicatorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            indicatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            indicatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
+    
+    private func setupFunctionality() {
         viewModel.onFinishFetchCoinDetail = didFinishFetchCoin
-        viewModel.getCoinDetail()
     }
     
     private func didFinishFetchCoin(_ message: String?) {
-        guard message == nil else {
-            popupAlert(title: "Error", message: message ?? "Error")
-            return
-        }
-        guard let data = viewModel.coinDetailData else {return}
-        baseView.data = data
         DispatchQueue.main.async {
+            self.indicatorView.stopAnimating()
+            guard message == nil else {
+                self.popupAlert(title: "Error", message: message ?? "Error")
+                return
+            }
+            guard let data = self.viewModel.coinDetailData else {return}
+            
+            self.baseView.data = data
             self.navigationItem.title = data.name ?? "Coin"
         }
     }

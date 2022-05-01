@@ -28,6 +28,8 @@ class HomeViewController: UIViewController {
     
     lazy var indicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -49,6 +51,7 @@ class HomeViewController: UIViewController {
         let vc = SettingsViewController()
         vc.didFinishConfigureSettings = { orderSetting in
             if self.viewModel.fetchOrder != orderSetting {
+                self.indicatorView.startAnimating()
                 self.viewModel.fetchOrder = orderSetting ?? .market_cap_desc
                 self.viewModel.page = 0
                 self.viewModel.fetchCoins()
@@ -75,6 +78,15 @@ class HomeViewController: UIViewController {
     
     func setupView() {
         view.addSubview(tableView)
+        view.addSubview(indicatorView)
+        
+        NSLayoutConstraint.activate([
+            indicatorView.topAnchor.constraint(equalTo: view.topAnchor),
+            indicatorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            indicatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            indicatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        
         NSLayoutConstraint.activate([
             //vertical
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
@@ -99,7 +111,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
                 "Couldn't find UITableViewCell for \(String(describing: HomeTableViewCell.self)), make sure the cell is registered with table view")
         }
         if isLoadingCell(for: indexPath) {
-            cell.backgroundColor = .red
+            cell.showLoadingView()
         } else {
             cell.setupContent(data: viewModel.coinData[indexPath.row])
             cell.backgroundColor = .white

@@ -10,7 +10,7 @@ import UIKit
 class DetailView: UIView {
     private lazy var nameLabel: UILabel = {
         let view = UILabel()
-        view.text = "ini name"
+        view.text = "no data"
         view.isHidden = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -25,28 +25,28 @@ class DetailView: UIView {
     
     private lazy var symbolLabel: UILabel = {
         let view = UILabel()
-        view.text = "ini symbol"
+        view.text = "no data"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var currentUSDPrice: UILabel = {
         let view = UILabel()
-        view.text = "ini current price"
+        view.text = "no data"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var marketCapLabel: UILabel = {
         let view = UILabel()
-        view.text = "ini market cap"
+        view.text = "no data"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var marketCapRank: UILabel = {
         let view = UILabel()
-        view.text = "ini market cap rank"
+        view.text = "no data"
         view.adjustsFontSizeToFitWidth = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -63,7 +63,7 @@ class DetailView: UIView {
     
     private lazy var segmentValueLabel: UILabel = {
         let view = UILabel()
-        view.text = "ini segment value"
+        view.text = "no data"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -80,24 +80,27 @@ class DetailView: UIView {
     private lazy var assetDescription: UITextView = {
         let view = UITextView()
         view.isEditable = false
-        view.text = "ini description"
+        view.text = "no description available"
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     @objc private func didTapSegmentedView(sender: UISegmentedControl) {
+        var value: Float?
         switch sender.selectedSegmentIndex {
         case 0:
-            segmentValueLabel.text = (data?.marketData?.priceChange24h?.description ?? "") + "%"
+             value = (data?.marketData?.priceChange24h)
         case 1:
-            segmentValueLabel.text = (data?.marketData?.priceChange7d?.description ?? "") + "%"
+            value = (data?.marketData?.priceChange7d)
         case 2:
-            segmentValueLabel.text = (data?.marketData?.priceChange30d?.description ?? "") + "%"
+            value = (data?.marketData?.priceChange30d)
         case 3:
-            segmentValueLabel.text = (data?.marketData?.priceChange1y?.description ?? "") + "%"
+            value = (data?.marketData?.priceChange1y)
         default:
             return
         }
+        segmentValueLabel.text =  (value?.description ?? "") + "%"
+        segmentValueLabel.textColor = (value ?? 0) > 0 ? .green : .red
     }
     
     var data: CoinGeckoDetailModel? {
@@ -134,6 +137,7 @@ class DetailView: UIView {
             
             if let priceChange24 = data.marketData?.priceChange24h {
                 self.segmentValueLabel.text = (priceChange24.description) + "%"
+                self.segmentValueLabel.textColor = priceChange24 > 0 ? .green : .red
             }
             
             if let url = URL(string: data.iconUrl?.largeImage ?? "") {

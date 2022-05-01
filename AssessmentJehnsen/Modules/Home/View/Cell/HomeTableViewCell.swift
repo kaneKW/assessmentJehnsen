@@ -15,29 +15,31 @@ class HomeTableViewCell: UITableViewCell {
     }()
     lazy var nameLabel: UILabel = {
         let view = UILabel()
-        view.text = "name"
         view.font = .systemFont(ofSize: 13)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     lazy var symbolLabel: UILabel = {
         let view = UILabel()
-        view.text = "symbol"
         view.font = .systemFont(ofSize: 13)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     lazy var currentPriceLabel: UILabel = {
         let view = UILabel()
-        view.text = "current price"
         view.font = .systemFont(ofSize: 13)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     lazy var priceChangeLabel: UILabel = {
         let view = UILabel()
-        view.text = "pricechange"
         view.font = .systemFont(ofSize: 13)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var indicatorView: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -48,14 +50,23 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func setupContent(data: CoinGeckoModel) {
+        indicatorView.stopAnimating()
         nameLabel.text = data.name
         symbolLabel.text = data.symbolLabel
-        currentPriceLabel.text = data.currentPrice?.description
-        priceChangeLabel.text = data.priceChange24h?.description
+        if let currentPrice = data.currentPrice?.description {
+            currentPriceLabel.text = "Current price " + currentPrice
+        }
+        if let priceChange = data.priceChange24h?.description {
+            priceChangeLabel.text = "Price change " + priceChange
+        }
         guard let url = URL(string: data.iconUrl ?? "") else {
             return
         }
         iconImage.load(url: url)
+    }
+    
+    func showLoadingView() {
+        indicatorView.startAnimating()
     }
     
     func setupView() {
@@ -64,6 +75,7 @@ class HomeTableViewCell: UITableViewCell {
         addSubview(symbolLabel)
         addSubview(currentPriceLabel)
         addSubview(priceChangeLabel)
+        addSubview(indicatorView)
         
         NSLayoutConstraint.activate([
             iconImage.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -90,6 +102,13 @@ class HomeTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             priceChangeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             priceChangeLabel.centerYAnchor.constraint(equalTo: symbolLabel.centerYAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
+            indicatorView.topAnchor.constraint(equalTo: topAnchor),
+            indicatorView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            indicatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            indicatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
         ])
     }
     override func awakeFromNib() {

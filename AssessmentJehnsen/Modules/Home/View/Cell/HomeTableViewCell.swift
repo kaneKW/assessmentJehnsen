@@ -40,6 +40,7 @@ class HomeTableViewCell: UITableViewCell {
     
     lazy var indicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

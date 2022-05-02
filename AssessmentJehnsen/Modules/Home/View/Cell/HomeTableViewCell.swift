@@ -58,7 +58,7 @@ class HomeTableViewCell: UITableViewCell {
         indicatorView.stopAnimating()
         nameLabel.text = data.name
         symbolLabel.text = data.symbolLabel
-        if let currentPrice = data.currentPrice?.description {
+        if let currentPrice = data.currentPrice?.currencyString {
             currentPriceLabel.text = "current_price".localized() + " " + currentPrice + " " + "&currency&".localized()
         }
         if let priceChange = data.priceChange24h {

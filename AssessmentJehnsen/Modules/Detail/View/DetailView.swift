@@ -31,6 +31,7 @@ class DetailView: UIView {
     
     private lazy var marketCapLabel: UILabel = {
         let view = UILabel()
+        view.adjustsFontSizeToFitWidth = true
         view.text = "Data not available".localized()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -131,7 +132,7 @@ class DetailView: UIView {
                 } else {
                     marketCapLocalized = marketCap.marketCapIDR ?? 0
                 }
-                self.marketCapLabel.text = "with market cap".localized() + " " + "\(marketCapLocalized.description) " + "&currency&".localized()
+                self.marketCapLabel.text = "with market cap".localized() + " " + "\(marketCapLocalized.currencyString) " + "&currency&".localized()
             }
             
             if let currentPrice = data.marketData?.currentPrice {
@@ -141,7 +142,7 @@ class DetailView: UIView {
                 } else {
                     currentPriceLocalized = currentPrice.idr ?? 0
                 }
-                self.currentUSDPrice.text =  "current_price".localized() +  " \(currentPriceLocalized.description) " + "&currency&".localized()
+                self.currentUSDPrice.text =  "current_price".localized() +  " \(currentPriceLocalized.currencyString) " + "&currency&".localized()
             }
             
             if let description = data.description {
@@ -202,8 +203,8 @@ class DetailView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-//            marketCapLabel.centerYAnchor.constraint(equalTo: marketCapRank.centerYAnchor, constant: 0),
             marketCapLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            marketCapLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             marketCapLabel.topAnchor.constraint(equalTo: marketCapRank.bottomAnchor, constant: 16)
         ])
         

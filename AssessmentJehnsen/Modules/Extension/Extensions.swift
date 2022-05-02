@@ -64,6 +64,19 @@ extension Float {
     var clean: String {
        return self.truncatingRemainder(dividingBy: 1) == 0 ? String(format: "%.0f", self) : String(self)
     }
+    
+    var currencyString: String {
+        let formatter = NumberFormatter()
+        let identifier = Constant.shared.getCurrentLanguage() == "en" ? "en_US" : "id_ID"
+        let locale = Locale(identifier: identifier)
+        formatter.locale = locale
+        formatter.numberStyle = .currency
+        if let formattedTipAmount = formatter.string(from: self as NSNumber) {
+            return "\(formattedTipAmount)"
+        } else {
+            return ""
+        }
+    }
 }
 
 extension JSONDecoder {

@@ -8,13 +8,13 @@
 import Foundation
 
 protocol CoinServiceProtocol {
-    func fetchCoins(order: CoinOrder, currencyInUSD: Bool, page: Int, completion: @escaping (Result<[CoinGeckoModel], CoinGeckoError>) -> Void)
+    func fetchCoins(order: CoinOrder, page: Int, completion: @escaping (Result<[CoinGeckoModel], CoinGeckoError>) -> Void)
     func fetchCoinDetail(coinId: String, completion: @escaping (Result<CoinGeckoDetailModel, CoinGeckoError>) -> Void)
 }
 
 class CoinService: CoinServiceProtocol {
-    func fetchCoins(order: CoinOrder, currencyInUSD: Bool, page: Int = 1, completion: @escaping (Result<[CoinGeckoModel], CoinGeckoError>) -> Void) {
-        let currency = currencyInUSD ? "usd" : "idr"
+    func fetchCoins(order: CoinOrder, page: Int = 1, completion: @escaping (Result<[CoinGeckoModel], CoinGeckoError>) -> Void) {
+        let currency = Constant.shared.getCurrentLanguage() == "en" ? "usd" : "idr"
         let parameters: [String: Any] = [
             "vs_currency": currency,
             "order": order.rawValue,

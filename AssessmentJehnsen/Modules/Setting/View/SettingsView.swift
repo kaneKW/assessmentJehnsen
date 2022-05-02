@@ -51,7 +51,8 @@ class SettingsView: UIView {
     
     private lazy var confirmButton: UIButton = {
         let view = UIButton()
-        view.setTitle("Confirm", for: .normal)
+        view.setTitle("confirm".localized(), for: .normal)
+        view.layer.cornerRadius  = 15
         view.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
         view.backgroundColor = .blue
         view.translatesAutoresizingMaskIntoConstraints = false

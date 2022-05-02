@@ -8,13 +8,14 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var startButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        startButton.setTitle("start".localized(), for: .normal)
     }
     
     @IBAction func startPressed(_ sender: Any) {
-//        let vm = DetailViewModel(service: CoinService(), coinId: "bitcoin")
-//        let vc = DetailViewController(viewModel: vm)
         let vc = HomeViewController()
         let navigation = UINavigationController(rootViewController: vc)
         navigation.modalPresentationStyle = .overFullScreen

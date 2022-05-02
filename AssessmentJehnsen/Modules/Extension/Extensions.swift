@@ -50,6 +50,14 @@ extension String {
             return NSAttributedString()
         }
     }
+    
+    func localized() -> String {
+        let flags = Constant.shared.getCurrentLanguage()
+        let path = Bundle.main.path(forResource: flags, ofType: "lproj")
+        let bundle = Bundle(path: path!)
+        let localizedString = NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
+        return localizedString
+    }
 }
 
 extension Float {
@@ -64,3 +72,5 @@ extension JSONDecoder {
         return try decode(T.self, from: data)
     }
 }
+
+

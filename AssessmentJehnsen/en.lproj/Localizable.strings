@@ -1,0 +1,31 @@
+/* 
+  Localizable.strings
+  AssessmentJehnsen
+
+  Created by Jehnsen Hirena Kane on 02/05/22.
+  
+*/
+"start" = "Start";
+"current_price" = "Current Price";
+"price_change" = "Price change today";
+"sort_based_on" = "Sort based on";
+"language" = "Language";
+"confirm" = "Confirmation";
+"Market Cap Descending" = "Market Cap Descending";
+"Market Cap Ascending" = "Market Cap Ascending";
+"Gecko Descending" = "Gecko Descending";
+"Gecko Ascending" = "Gecko Ascending";
+"Volume Ascending" = "Volume Ascending";
+"Volume Descending" = "Volume Descending";
+"ID Ascending" = "ID Ascending";
+"ID Descending" = "ID Descending";
+"Coins" = "Coins";
+"Market Cap Rank" = "Market Cap Rank";
+"with market cap" = "Markep Cap Value";
+"Current Price Change Percentage" = "Current Price Change Percentage";
+"Data not available" = "Data not available";
+"24 hour" = "24 Hour";
+"7 day" = "7 Day";
+"30 day" = "30 Day";
+"1 year" = "1 Year";
+"&currency&" = "USD";

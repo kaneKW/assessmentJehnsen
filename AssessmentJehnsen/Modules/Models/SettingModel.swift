@@ -13,21 +13,21 @@ enum CoinOrder: String, CaseIterable {
     var title: String {
         switch self {
         case .market_cap_desc:
-            return "Market Cap Descending"
+            return "Market Cap Descending".localized()
         case .market_cap_asc:
-            return "Market Cap Ascending"
+            return "Market Cap Ascending".localized()
         case .gecko_desc:
-            return "Gecko Descending"
+            return "Gecko Descending".localized()
         case .gecko_asc:
-            return "Gecko Ascending"
+            return "Gecko Ascending".localized()
         case .volume_asc:
-            return "Volume Ascending"
+            return "Volume Ascending".localized()
         case .volume_desc:
-            return "Volume Descending"
+            return "Volume Descending".localized()
         case .id_asc:
-            return "ID Ascending"
+            return "ID Ascending".localized()
         case .id_desc:
-            return "ID Descending"
+            return "ID Descending".localized()
         }
     }
 }

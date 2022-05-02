@@ -8,14 +8,6 @@
 import UIKit
 
 class DetailView: UIView {
-    private lazy var nameLabel: UILabel = {
-        let view = UILabel()
-        view.text = "no data"
-        view.isHidden = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     private lazy var iconImage: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
@@ -25,28 +17,28 @@ class DetailView: UIView {
     
     private lazy var symbolLabel: UILabel = {
         let view = UILabel()
-        view.text = "no data"
+        view.text = "Data not available".localized()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var currentUSDPrice: UILabel = {
         let view = UILabel()
-        view.text = "no data"
+        view.text = "Data not available".localized()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var marketCapLabel: UILabel = {
         let view = UILabel()
-        view.text = "no data"
+        view.text = "Data not available".localized()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var marketCapRank: UILabel = {
         let view = UILabel()
-        view.text = "no data"
+        view.text = "Data not available".localized()
         view.adjustsFontSizeToFitWidth = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -55,7 +47,7 @@ class DetailView: UIView {
     private lazy var segmentTitleLabel: UILabel = {
         let view = UILabel()
         view.numberOfLines = 3
-        view.text = "Current Price Change Percentage"
+        view.text = "Current Price Change Percentage".localized()
         view.adjustsFontSizeToFitWidth = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -63,13 +55,16 @@ class DetailView: UIView {
     
     private lazy var segmentValueLabel: UILabel = {
         let view = UILabel()
-        view.text = "no data"
+        view.text = "Data not available".localized()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var segmentedView: UISegmentedControl = {
-        let timePriceChangePrecentage = ["24 hour", "7 day", "30 day", "1 year"]
+        let timePriceChangePrecentage = ["24 hour".localized(),
+                                         "7 day".localized(),
+                                         "30 day".localized(),
+                                         "1 year".localized()]
         let view = UISegmentedControl(items: timePriceChangePrecentage)
         view.selectedSegmentIndex = 0
         view.addTarget(self, action: #selector(didTapSegmentedView), for: .valueChanged)
@@ -80,7 +75,7 @@ class DetailView: UIView {
     private lazy var assetDescription: UITextView = {
         let view = UITextView()
         view.isEditable = false
-        view.text = "no description available"
+        view.text = "Data not available".localized()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -109,6 +104,8 @@ class DetailView: UIView {
         }
     }
     
+    let isEnglish = Constant.shared.getCurrentLanguage() == "en" ? true : false
+    
     init() {
         super.init(frame: .zero)
         setupLayout()
@@ -123,16 +120,40 @@ class DetailView: UIView {
         DispatchQueue.main.async {
             self.symbolLabel.text = data.symbolLabel
             
-            if let marketCapRank = data.marketCapRank, let marketCap = data.marketData?.coinMarketCap?.marketCapUSD {
-                self.marketCapRank.text = "Market Cap Rank \(String(describing: marketCapRank)) with market cap \(marketCap.description) USD"
+            if let marketCapRank = data.marketCapRank {
+                self.marketCapRank.text = "Market Cap Rank".localized() + " " + String(describing: marketCapRank)
             }
             
-            if let currentPrice = data.marketData?.currentPrice?.usd {
-                self.currentUSDPrice.text =  "Current Price \(currentPrice.description) USD"
+            if let marketCap = data.marketData?.coinMarketCap {
+                var marketCapLocalized = Float()
+                if self.isEnglish {
+                    marketCapLocalized = marketCap.marketCapUSD ?? 0
+                } else {
+                    marketCapLocalized = marketCap.marketCapIDR ?? 0
+                }
+                self.marketCapLabel.text = "with market cap".localized() + " " + "\(marketCapLocalized.description) " + "&currency&".localized()
             }
             
-            if let description = data.description?.en {
-                self.assetDescription.attributedText = description.htmlToAttributedString
+            if let currentPrice = data.marketData?.currentPrice {
+                var currentPriceLocalized = Float()
+                if self.isEnglish {
+                    currentPriceLocalized = currentPrice.usd ?? 0
+                } else {
+                    currentPriceLocalized = currentPrice.idr ?? 0
+                }
+                self.currentUSDPrice.text =  "current_price".localized() +  " \(currentPriceLocalized.description) " + "&currency&".localized()
+            }
+            
+            if let description = data.description {
+                var descriptionLocalized = String()
+                if self.isEnglish {
+                    descriptionLocalized = description.en ?? ""
+                } else {
+                    descriptionLocalized = description.id ?? ""
+                }
+                
+                descriptionLocalized = descriptionLocalized.isEmpty ? "Data not available".localized() : descriptionLocalized
+                self.assetDescription.attributedText = descriptionLocalized.htmlToAttributedString
             }
             
             if let priceChange24 = data.marketData?.priceChange24h {
@@ -147,7 +168,6 @@ class DetailView: UIView {
     }
     
     private func setupLayout() {
-        addSubview(nameLabel)
         addSubview(iconImage)
         addSubview(symbolLabel)
         addSubview(currentUSDPrice)
@@ -159,26 +179,20 @@ class DetailView: UIView {
         addSubview(assetDescription)
         
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
-            nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-        ])
-        
-        NSLayoutConstraint.activate([
-            iconImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 50),
+            iconImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
             iconImage.centerXAnchor.constraint(equalTo: centerXAnchor),
             iconImage.heightAnchor.constraint(equalToConstant: 150),
             iconImage.widthAnchor.constraint(equalToConstant: 150),
         ])
         
         NSLayoutConstraint.activate([
-            symbolLabel.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 24),
-            symbolLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            symbolLabel.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 10),
+            symbolLabel.centerXAnchor.constraint(equalTo: iconImage.centerXAnchor, constant: 0),
         ])
         
         NSLayoutConstraint.activate([
-            currentUSDPrice.centerYAnchor.constraint(equalTo: symbolLabel.centerYAnchor, constant: 0),
-            currentUSDPrice.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            currentUSDPrice.topAnchor.constraint(equalTo: symbolLabel.bottomAnchor, constant: 16),
+            currentUSDPrice.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
         
         NSLayoutConstraint.activate([
@@ -188,8 +202,9 @@ class DetailView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            marketCapLabel.centerYAnchor.constraint(equalTo: marketCapRank.centerYAnchor, constant: 0),
-            marketCapLabel.leadingAnchor.constraint(equalTo: marketCapRank.trailingAnchor, constant: 16),
+//            marketCapLabel.centerYAnchor.constraint(equalTo: marketCapRank.centerYAnchor, constant: 0),
+            marketCapLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            marketCapLabel.topAnchor.constraint(equalTo: marketCapRank.bottomAnchor, constant: 16)
         ])
         
         NSLayoutConstraint.activate([

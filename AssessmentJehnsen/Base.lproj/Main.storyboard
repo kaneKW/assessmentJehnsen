@@ -33,6 +33,9 @@
                             <constraint firstItem="ata-r2-xjF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b7S-YG-cGH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startButton" destination="ata-r2-xjF" id="6rO-Oo-N7f"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

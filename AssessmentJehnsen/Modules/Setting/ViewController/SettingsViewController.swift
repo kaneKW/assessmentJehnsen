@@ -31,6 +31,7 @@ class SettingsViewController: UIViewController {
     
     var didFinishConfigureSettings: ((_ order: CoinOrder?) -> Void)?
     private func handleConfirm() {
+        Constant.shared.saveLanguage(language: viewModel.selectedLanguage)
         didFinishConfigureSettings?(viewModel.selectedOrder)
         self.dismiss(animated: true, completion: nil)
     }
@@ -57,30 +58,49 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.orders.count
+        if section == 0 {
+            return viewModel.orders.count
+        } else {
+            return viewModel.supportedLanguages.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: SettingCollectionViewCell.self), for: indexPath) as? SettingCollectionViewCell else {
             fatalError("wrong cell identifier")
         }
-        let order = viewModel.orders[indexPath.row]
-        cell.titleText = order.title
-        
-        if order == viewModel.selectedOrder {
-            cell.setSelected()
+        if indexPath.section == 0 {
+            let order = viewModel.orders[indexPath.row]
+            cell.titleText = order.title
+            if order == viewModel.selectedOrder {
+                cell.setSelected()
+            } else {
+                cell.setUnselected()
+            }
         } else {
-            cell.setUnselected()
+            let language = viewModel.supportedLanguages[indexPath.row]
+            cell.titleText = language == "en" ? "English" : "Indonesia"
+            if language == viewModel.selectedLanguage {
+                cell.setSelected()
+            } else {
+                cell.setUnselected()
+            }
         }
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.selectedOrder = viewModel.orders[indexPath.row]
+        if indexPath.section == 0 {
+            viewModel.selectedOrder = viewModel.orders[indexPath.row]
+        } else {
+            viewModel.selectedLanguage = viewModel.supportedLanguages[indexPath.row]
+        }
         collectionView.reloadData()
     }
     
@@ -91,14 +111,26 @@ extension SettingsViewController: UICollectionViewDataSource, UICollectionViewDe
             for: indexPath) as? SettingCollectionHeaderView else {
                 fatalError("Wrong Supplementary View")
             }
-        view.setupContent(text: "Sort based on")
+        if indexPath.section == 0 {
+            view.setupContent(text: "sort_based_on".localized())
+        } else {
+            view.setupContent(text: "language".localized())
+        }
+        
         return view
     }
 }
 
 extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let item = viewModel.orders[indexPath.row].title
+        var item = String()
+        if indexPath.section == 0 {
+            item = viewModel.orders[indexPath.row].title
+        } else {
+            let language = viewModel.supportedLanguages[indexPath.row]
+            item = language == "en" ? "English" : "Indonesia"
+        }
+        
         let itemSize = item.size(withAttributes: [
             NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20)
         ])

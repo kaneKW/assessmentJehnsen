@@ -13,6 +13,7 @@ class UserDefaultManager {
     let userDefaults = UserDefaults.standard
     
     let keyOrder = "fetchOrder"
+    let keyLanguage = "language"
     
     func saveFetchOrder(order: CoinOrder) {
         userDefaults.set(order.rawValue, forKey: keyOrder)
@@ -23,5 +24,13 @@ class UserDefaultManager {
             return .market_cap_desc
         }
         return CoinOrder(rawValue: orderRawValue) ?? .market_cap_desc
+    }
+    
+    func saveLanguage(language: String) {
+        userDefaults.set(language, forKey: keyLanguage)
+    }
+      
+    func getLanguage() -> String {
+        return userDefaults.string(forKey: keyLanguage) ?? "en"
     }
 }

@@ -9,5 +9,7 @@ import Foundation
 
 class SettingViewModel {
     var selectedOrder = UserDefaultManager.shared.getFetchOrder()
+    var selectedLanguage = UserDefaultManager.shared.getLanguage()
     var orders = CoinOrder.allCases
+    var supportedLanguages = Constant.shared.supportedLanguages
 }

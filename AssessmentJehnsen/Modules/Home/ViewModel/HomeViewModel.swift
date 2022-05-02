@@ -30,7 +30,7 @@ class HomeViewModel {
     }
     
     func fetchCoins() {
-        service.fetchCoins(order: fetchOrder, currencyInUSD: currencyInUSD, page: page) { [weak self] result in
+        service.fetchCoins(order: fetchOrder, page: page) { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let response):

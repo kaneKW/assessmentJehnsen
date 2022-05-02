@@ -27,12 +27,16 @@ class HomeTableViewCell: UITableViewCell {
     }()
     lazy var currentPriceLabel: UILabel = {
         let view = UILabel()
+        view.textAlignment = .right
+        view.adjustsFontSizeToFitWidth = true
         view.font = .systemFont(ofSize: 13)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     lazy var priceChangeLabel: UILabel = {
         let view = UILabel()
+        view.textAlignment = .right
+        view.adjustsFontSizeToFitWidth = true
         view.font = .systemFont(ofSize: 13)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -55,10 +59,16 @@ class HomeTableViewCell: UITableViewCell {
         nameLabel.text = data.name
         symbolLabel.text = data.symbolLabel
         if let currentPrice = data.currentPrice?.description {
-            currentPriceLabel.text = "Current price " + currentPrice
+            currentPriceLabel.text = "current_price".localized() + " " + currentPrice + " " + "&currency&".localized()
         }
-        if let priceChange = data.priceChange24h?.description {
-            priceChangeLabel.text = "Price change " + priceChange
+        if let priceChange = data.priceChange24h {
+            priceChangeLabel.text = "price_change".localized() + " " + priceChange.description + "%"
+            
+            if priceChange > 0 {
+                priceChangeLabel.textColor = .green
+            } else {
+                priceChangeLabel.textColor = .red
+            }
         }
         guard let url = URL(string: data.iconUrl ?? "") else {
             return
@@ -97,11 +107,13 @@ class HomeTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             currentPriceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant:-16),
+            currentPriceLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 16),
             currentPriceLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
         ])
         
         NSLayoutConstraint.activate([
             priceChangeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            priceChangeLabel.leadingAnchor.constraint(equalTo: symbolLabel.trailingAnchor, constant: 16),
             priceChangeLabel.centerYAnchor.constraint(equalTo: symbolLabel.centerYAnchor),
         ])
         

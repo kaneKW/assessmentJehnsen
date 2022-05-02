@@ -22,14 +22,17 @@ struct CoinImage: Decodable {
 
 struct CoinMarketCap: Decodable {
     let marketCapUSD: Float?
+    let marketCapIDR: Float?
     
     enum Keys: String, CodingKey {
         case marketCapUSD = "usd"
+        case marketCapIDR = "idr"
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         self.marketCapUSD = try container.decodeIfPresent(Float.self, forKey: .marketCapUSD)
+        self.marketCapIDR = try container.decodeIfPresent(Float.self, forKey: .marketCapIDR)
     }
 }
 
@@ -63,27 +66,33 @@ struct CoinMarketData: Decodable {
 
 struct CoinCurrentPrice: Decodable {
     let usd: Float?
+    let idr: Float?
     
     enum Keys: String, CodingKey {
         case usd
+        case idr
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         self.usd = try container.decodeIfPresent(Float.self, forKey: .usd)
+        self.idr = try container.decodeIfPresent(Float.self, forKey: .idr)
     }
 }
 
 struct CoinDescription: Decodable {
     let en: String?
+    let id: String?
     
     enum Keys: String, CodingKey {
         case en
+        case id
     }
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         self.en = try container.decodeIfPresent(String.self, forKey: .en)
+        self.id = try container.decodeIfPresent(String.self, forKey: .id)
     }
 }
 

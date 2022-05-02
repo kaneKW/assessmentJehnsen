@@ -50,13 +50,12 @@ class HomeViewController: UIViewController {
     @objc private func filterTapped() {
         let vc = SettingsViewController()
         vc.didFinishConfigureSettings = { orderSetting in
-            if self.viewModel.fetchOrder != orderSetting {
                 self.indicatorView.startAnimating()
                 self.viewModel.fetchOrder = orderSetting ?? .market_cap_desc
                 self.viewModel.page = 0
                 self.viewModel.fetchCoins()
+                self.tableView.reloadData()
             }
-        }
         present(vc, animated: true, completion: nil)
         
     }
